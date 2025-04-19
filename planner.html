@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Event Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Weather Event Planner</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hourly.html">Hourly Forecast</a></li>
+                    <li><a href="4day.html">4-Day Forecast</a></li>
+                    <li><a href="planner.html" class="active">Event Planner</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="event-planner-form">
+            <h2 class="section-title">Plan Your Event</h2>
+            <form id="event-form">
+                <div class="form-group">
+                    <label for="event-name">Event Name</label>
+                    <input type="text" id="event-name" placeholder="Enter your event name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-location">Location</label>
+                    <input type="text" id="event-location" placeholder="Enter event location" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-date">Date</label>
+                    <input type="date" id="event-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-time">Time</label>
+                    <input type="time" id="event-time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" required>
+                        <option value="">-- Select Event Type --</option>
+                        <option value="outdoor">Outdoor Activity</option>
+                        <option value="indoor">Indoor Event</option>
+                        <option value="sports">Sports</option>
+                        <option value="picnic">Picnic</option>
+                        <option value="travel">Travel</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="check-weather-btn" class="primary-btn">Check Weather</button>
+            </form>
+        </section>
+        
+        <section id="event-weather-result" class="event-weather-result" style="display: none;">
+            <h2 class="section-title">Weather for Your Event</h2>
+            
+            <div class="event-details">
+                <h3 id="result-event-name">Your Event</h3>
+                <p><strong>Location:</strong> <span id="result-location">--</span></p>
+                <p><strong>Date & Time:</strong> <span id="result-datetime">--</span></p>
+                <p><strong>Event Type:</strong> <span id="result-event-type">--</span></p>
+            </div>
+            
+            <div class="weather-forecast-card">
+                <div class="weather-icon-large">
+                    <img id="result-weather-icon" src="" alt="Weather icon">
+                </div>
+                <div class="weather-details">
+                    <p class="temperature-large" id="result-temperature">--°C</p>
+                    <p class="weather-description" id="result-weather-description">--</p>
+                    <div class="extra-details">
+                        <div class="detail">
+                            <span class="material-icons">water_drop</span>
+                            <p>Humidity: <span id="result-humidity">--%</span></p>
+                        </div>
+                        <div class="detail">
+                            <span class="material-icons">air</span>
+                            <p>Wind: <span id="result-wind">-- km/h</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recommendation-container">
+                <h3>Recommendation</h3>
+                <div class="recommendation-card">
+                    <p id="weather-recommendation" class="recommendation-text">
+                        Loading recommendations...
+                    </p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="save-event-btn" class="secondary-btn">Save Event</button>
+                <button id="new-search-btn" class="outline-btn">New Search</button>
+            </div>
+        </section>
+        
+        <section id="saved-events-section" class="saved-events">
+            <h2 class="section-title">Saved Events</h2>
+            <div id="saved-events-container" class="events-grid">
+                <!-- Saved events will be added here dynamically -->
+            </div>
+        </section>
+        
+        <footer>
+            <p>Weather data provided by OpenWeatherMap API</p>
+            <p>Developed by BCA Semester 6 Students(Prashant Ranjan, Rupak Kumar, Ritesh Kumar)</p>
+        </footer>
+    </div>
+    
+    <script src="planner.js"></script>
+</body>
+</html>

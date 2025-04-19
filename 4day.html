@@ -1,0 +1,55 @@
+<!-- 4day.html (Updated & Cleaned) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Day Weather Forecast</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>4-Day Weather Forecast</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hourly.html">Hourly Forecast</a></li>
+                    <li><a href="4day.html" class="active">4-Day Forecast</a></li>
+                    <li><a href="planner.html">Event Planner</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for a city...">
+                <button id="search-btn">Search</button>
+                <button id="current-location-btn">Use My Location</button>
+            </div>
+        </header>
+
+        <section class="current-location-info">
+            <h2 class="city-name" id="city-name">Loading...</h2>
+            <p class="date" id="current-date">--</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Extended 4-Day Forecast</h2>
+            <div class="forecast expanded" id="forecast">
+                <!-- Forecast cards will be inserted dynamically -->
+            </div>
+        </section>
+
+        <footer>
+            <p>Weather data provided by OpenWeatherMap API</p>
+            <p>Developed by BCA Semester 6 Students(Prashant Ranjan, Rupak Kumar, Ritesh Kumar)</p>
+        </footer>
+    </div>
+
+    <script src="4day.js"></script>
+</body>
+</html>

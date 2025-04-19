@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly Weather Forecast</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Hourly Weather Forecast</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hourly.html" class="active">Hourly Forecast</a></li>
+                    <li><a href="4day.html">4-Day Forecast</a></li>
+                    <li><a href="planner.html">Event Planner</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for a city...">
+                <button id="search-btn">Search</button>
+                <button id="current-location-btn">Use My Location</button>
+            </div>
+        </header>
+        
+        <section class="current-location-info">
+            <h2 class="city-name" id="city-name">Loading...</h2>
+            <p class="date" id="current-date">--</p>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Next 24 Hours</h2>
+            <div class="hourly-forecast expanded">
+                <div class="hourly-container" id="hourly-container">
+                    <!-- Hourly forecast items will be added here dynamically -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="hourly-chart-section">
+            <h2 class="section-title">Temperature Trend</h2>
+            <div class="chart-container">
+                <canvas id="hourly-chart"></canvas>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Weather data provided by OpenWeatherMap API</p>
+            <p>Developed by BCA Semester 6 Students(Prashant Ranjan, Rupak Kumar, Ritesh Kumar)</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="hourly.js"></script>
+</body>
+</html>
