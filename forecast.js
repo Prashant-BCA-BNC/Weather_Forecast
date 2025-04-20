@@ -58,37 +58,37 @@ function handleSearch() {
     }
 }
 
-// Get user's current location
-function getUserLocation() {
-    showLoading();
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            async (position) => {  // Make this async
-                try {
-                    const { latitude, longitude } = position.coords;
-                    // Update based on which page you're on
-                    if (window.location.pathname.includes('hourly')) {
-                        await getHourlyForecastByCoordinates(latitude, longitude);
-                    } else if (window.location.pathname.includes('4day')) {
-                        await getForecastByCoordinates(latitude, longitude);
-                    } else {
-                        await getDailyForecastByCoordinates(latitude, longitude);
-                    }
-                } catch (error) {
-                    hideLoading();
-                    alert(`Error: ${error.message}`);
-                }
-            },
-            (error) => {
-                hideLoading();
-                alert(`Error getting location: ${error.message}`);
-            }
-        );
-    } else {
-        hideLoading();
-        alert("Geolocation is not supported by your browser");
-    }
-}
+// // Get user's current location
+// function getUserLocation() {
+//     showLoading();
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(
+//             async (position) => {  // Make this async
+//                 try {
+//                     const { latitude, longitude } = position.coords;
+//                     // Update based on which page you're on
+//                     if (window.location.pathname.includes('hourly')) {
+//                         await getHourlyForecastByCoordinates(latitude, longitude);
+//                     } else if (window.location.pathname.includes('4day')) {
+//                         await getForecastByCoordinates(latitude, longitude);
+//                     } else {
+//                         await getDailyForecastByCoordinates(latitude, longitude);
+//                     }
+//                 } catch (error) {
+//                     hideLoading();
+//                     alert(`Error: ${error.message}`);
+//                 }
+//             },
+//             (error) => {
+//                 hideLoading();
+//                 alert(`Error getting location: ${error.message}`);
+//             }
+//         );
+//     } else {
+//         hideLoading();
+//         alert("Geolocation is not supported by your browser");
+//     }
+// }
 
 // Get daily forecast data by city name
 async function getDailyForecast(city) {
