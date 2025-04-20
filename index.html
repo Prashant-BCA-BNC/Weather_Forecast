@@ -190,9 +190,24 @@ function isDaytime(currentTime, sunrise, sunset) {
     }
 
     function loadSavedLocations() {
-        const container = document.getElementById("saved-locations-container");
-        const saved = JSON.parse(localStorage.getItem("savedLocations")) || [];
-        container.innerHTML = saved.map(loc => `<div class="location-card">${loc}</div>`).join("");
+    const container = document.getElementById("saved-locations-container");
+    const saved = JSON.parse(localStorage.getItem("savedLocations")) || [];
+    
+    container.innerHTML = saved.map(loc => `
+        <div class="location-card" onclick="updateWeather('${loc}')">
+            ${loc}
+            <button class="remove-location" onclick="removeLocation('${loc}', event)">×</button>
+        </div>
+        `).join("");
+    }
+
+    // function to handle location removal
+    function removeLocation(location, event) {
+        event.stopPropagation(); // Prevent triggering the parent click
+        let saved = JSON.parse(localStorage.getItem("savedLocations")) || [];
+        saved = saved.filter(loc => loc !== location);
+        localStorage.setItem("savedLocations", JSON.stringify(saved));
+        loadSavedLocations();
     }
 
     document.addEventListener("DOMContentLoaded", () => {
