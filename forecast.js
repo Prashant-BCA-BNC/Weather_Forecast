@@ -42,9 +42,21 @@ function getUserLocation() {
     showLoading();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const { latitude, longitude } = position.coords;
-                getDailyForecastByCoordinates(latitude, longitude);
+            async (position) => {  // Make this async
+                try {
+                    const { latitude, longitude } = position.coords;
+                    // Update based on which page you're on
+                    if (window.location.pathname.includes('hourly')) {
+                        await getHourlyForecastByCoordinates(latitude, longitude);
+                    } else if (window.location.pathname.includes('4day')) {
+                        await getForecastByCoordinates(latitude, longitude);
+                    } else {
+                        await getDailyForecastByCoordinates(latitude, longitude);
+                    }
+                } catch (error) {
+                    hideLoading();
+                    alert(`Error: ${error.message}`);
+                }
             },
             (error) => {
                 hideLoading();
