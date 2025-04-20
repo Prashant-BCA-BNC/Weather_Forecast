@@ -28,6 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLocationBtn.addEventListener('click', getUserLocation);
 });
 
+// Add this to your DOMContentLoaded event listener
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        const city = searchInput.value.trim();
+        if (city) {
+            showLoading();
+            // Call the appropriate function based on page
+            if (window.location.pathname.includes('hourly')) {
+                getHourlyForecast(city);
+            } else if (window.location.pathname.includes('4day')) {
+                getForecast(city);
+            } else if (window.location.pathname.includes('planner')) {
+                // Handle planner page search if needed
+            } else {
+                updateWeather(city);
+            }
+        }
+    }
+});
+
 // Handle search
 function handleSearch() {
     const city = searchInput.value.trim();
